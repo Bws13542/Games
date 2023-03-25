@@ -1,0 +1,65 @@
+var bg, bg_image;
+var fg, fg_image;
+var bird, bird_image;
+var pipe1,pipeNorth_image;
+var pipe2,pipeSouth_image;
+var pipe1Group, pipe2Group;
+
+function preload(){
+    bg_image=loadImage("bg.png");
+    fg_image=loadImage("fg.png");
+    bird_image=loadImage("bird.png");
+    pipeNorth=loadImage("pipeNorth.png");
+    pipeNorth=loadImage("pipeSouth.png");
+}
+
+function setup() {
+createCanvas(288,512);
+
+//back ground
+bg=createSprite(144,256,10,10);
+bg.addImage(bg_image);
+
+//foot ground
+fg=createSprite(144,470,20,20);
+fg.addImage(fg_image);
+
+
+//bird
+bird=createSprite(25,256,20,20);
+bird.addImage(bird_image);
+}
+
+
+function draw () {
+    background(0,151,157);
+
+    //footground movement
+    fg.velocityX=-1;
+
+    //repositioning foot ground
+    if(fg.x<137){
+        fg.x=fg.width/2;
+    }
+//bird move
+if(keydown("space")){
+    bird.y=bird.y - 5;
+}
+else{
+    bird.velocityY = 5;
+}
+
+    drawSprites();
+
+
+}
+
+function pipe_moveBy(){
+    if(frameCount%75===0){
+        pipe1=createSprite(144,0,10,10);
+        pipe1=addImage(pipeNorth_image);
+        pipe1.y_random(0,50);
+        pipe1.velocityX=-2;
+        pipe
+    }
+}
